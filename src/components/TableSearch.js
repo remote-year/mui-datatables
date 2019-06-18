@@ -55,26 +55,20 @@ class TableSearch extends React.Component {
     const { classes, options, onHide, searchText } = this.props;
 
     return (
-      <Grow appear in={true} timeout={300}>
-        <div className={classes.main} ref={el => (this.rootRef = el)}>
-          <SearchIcon className={classes.searchIcon} />
-          <TextField
-            className={classes.searchText}
-            autoFocus={true}
-            InputProps={{
-              'aria-label': options.textLabels.toolbar.search,
-            }}
-            value={searchText || ''}
-            onChange={this.handleTextChange}
-            fullWidth={true}
-            inputRef={el => (this.searchField = el)}
-          />
-          <IconButton className={classes.clearIcon} onClick={onHide}>
-            <ClearIcon />
-          </IconButton>
-        </div>
-      </Grow>
-    );
+      <div className={classes.main} ref={el => (this.rootRef = el)}>
+        <TextField
+          className={classes.searchText}
+          autoFocus={true}
+          InputProps={{
+          'aria-label': options.textLabels.toolbar.search,
+          }}
+          value={searchText || ''}
+          onChange={this.handleTextChange}
+          fullWidth={true}
+          inputRef={el => (this.searchField = el)}
+        />
+      </div>
+      );
   }
 }
 
