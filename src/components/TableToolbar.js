@@ -191,17 +191,6 @@ class TableToolbar extends React.Component {
           )}
         </div>
         <div className={classes.actions}>
-          {options.search && (
-            <Tooltip title={search} disableFocusListener>
-              <IconButton
-                aria-label={search}
-                buttonRef={el => (this.searchButton = el)}
-                classes={{ root: this.getActiveIcon(classes, 'search') }}
-                onClick={this.setActiveIcon.bind(null, 'search')}>
-                <SearchIcon />
-              </IconButton>
-            </Tooltip>
-          )}
           {options.download && (
             <Tooltip title={downloadCsv}>
               <IconButton aria-label={downloadCsv} classes={{ root: classes.icon }} onClick={this.handleCSVDownload}>
