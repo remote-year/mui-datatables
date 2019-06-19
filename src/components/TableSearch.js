@@ -3,6 +3,7 @@ import Grow from '@material-ui/core/Grow';
 import TextField from '@material-ui/core/TextField';
 import SearchIcon from '@material-ui/icons/Search';
 import IconButton from '@material-ui/core/IconButton';
+import InputAdornment from '@material-ui/core/InputAdornment';
 import ClearIcon from '@material-ui/icons/Clear';
 import { withStyles } from '@material-ui/core/styles';
 
@@ -58,9 +59,9 @@ class TableSearch extends React.Component {
       <div className={classes.main} ref={el => (this.rootRef = el)}>
         <TextField
           className={classes.searchText}
-          autoFocus={true}
           InputProps={{
           'aria-label': options.textLabels.toolbar.search,
+          startAdornment: <InputAdornment position="start"><SearchIcon /></InputAdornment>,
           }}
           value={searchText || ''}
           onChange={this.handleTextChange}
