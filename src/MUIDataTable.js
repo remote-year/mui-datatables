@@ -23,6 +23,7 @@ const defaultTableStyles = {
   root: {},
   paper: {},
   tableRoot: {
+    border: 'none',
     outline: 'none',
   },
   responsiveScroll: {
