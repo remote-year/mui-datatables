@@ -37,7 +37,7 @@ const defaultTableStyles = {
     left: '-3000px',
   },
   liveAnnounce: {
-    border: '0',
+    border: 'none',
     clip: 'rect(0 0 0 0)',
     height: '1px',
     margin: '-1px',
