@@ -1091,10 +1091,7 @@ class MUIDataTable extends React.Component {
     const columnNames = columns.map(column => ({ name: column.name }));
 
     return (
-      <Paper
-        elevation={this.options.elevation}
-        ref={this.tableContent}
-        className={classnames(classes.paper, className)}>
+      <div>
         {selectedRows.data.length ? (
           <TableToolbarSelect
             options={this.options}
@@ -1185,7 +1182,7 @@ class MUIDataTable extends React.Component {
         <div className={classes.liveAnnounce} aria-live={'polite'} ref={el => (this.announceRef = el)}>
           {announceText}
         </div>
-      </Paper>
+      </div>
     );
   }
 }
