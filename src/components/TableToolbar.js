@@ -17,7 +17,9 @@ import styled from '../styled';
 import { createCSVDownload } from '../utils';
 
 export const defaultToolbarStyles = (theme, props) => ({
-  root: {},
+  root: {
+    padding: 0
+  },
   left: {
     flex: '1 1 auto',
   },
@@ -38,11 +40,6 @@ export const defaultToolbarStyles = (theme, props) => ({
   filterPaper: {
     maxWidth: '50%',
   },
-  searchIcon: {
-    display: 'inline-flex',
-    marginTop: '10px',
-    marginRight: '8px',
-  },
   ...(props.options.responsive ? { ...responsiveToolbarStyles(theme) } : {}),
 });
 
@@ -57,7 +54,7 @@ export const responsiveToolbarStyles = theme => ({
     },
     left: {
       // flex: "1 1 40%",
-      padding: '8px 0px',
+      padding: '0px 0px',
     },
     actions: {
       // flex: "1 1 60%",
@@ -69,7 +66,7 @@ export const responsiveToolbarStyles = theme => ({
       display: 'block',
     },
     left: {
-      padding: '8px 0px 0px 0px',
+      padding: '0px 0px 0px 0px',
     },
     titleText: {
       textAlign: 'center',
