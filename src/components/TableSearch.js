@@ -2,6 +2,7 @@ import React from 'react';
 import Grow from '@material-ui/core/Grow';
 import TextField from '@material-ui/core/TextField';
 import SearchIcon from '@material-ui/icons/Search';
+import CloseIcon from '@material-ui/icons/Close';
 import IconButton from '@material-ui/core/IconButton';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import ClearIcon from '@material-ui/icons/Clear';
@@ -60,8 +61,19 @@ class TableSearch extends React.Component {
         <TextField
           className={classes.searchText}
           InputProps={{
-          'aria-label': options.textLabels.toolbar.search,
-          startAdornment: <InputAdornment position="start"><SearchIcon /></InputAdornment>,
+            'aria-label': options.textLabels.toolbar.search,
+            startAdornment: (
+              <InputAdornment position="start">
+                <SearchIcon />
+              </InputAdornment>
+            ),
+            endAdornment: Boolean(this.state.searchText) && (
+            <InputAdornment position="end">
+              <IconButton onClick={this.props.clearSearch}>
+                <CloseIcon />
+              </IconButton>
+              </InputAdornment>
+            ),
           }}
           value={searchText || ''}
           onChange={this.handleTextChange}
@@ -69,7 +81,7 @@ class TableSearch extends React.Component {
           inputRef={el => (this.searchField = el)}
         />
       </div>
-      );
+    );
   }
 }
 

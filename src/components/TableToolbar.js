@@ -152,6 +152,12 @@ class TableToolbar extends React.Component {
     this.props.searchTextUpdate(value);
   };
 
+  clearSearch = () => {
+    const value = '';
+    this.setState({ searchText: value });
+    this.props.searchTextUpdate(value);
+  }
+
   render() {
     const {
       data,
@@ -177,6 +183,7 @@ class TableToolbar extends React.Component {
             <TableSearch
               searchText={searchText}
               onSearch={this.handleSearch}
+              clearSearch={this.clearSearch}
               onHide={this.hideSearch}
               options={options}
             />
