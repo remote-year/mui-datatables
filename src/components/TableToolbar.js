@@ -21,10 +21,10 @@ export const defaultToolbarStyles = (theme, props) => ({
     padding: 0
   },
   left: {
-    flex: '1 1 auto',
+    flex: '0 1 30%',
   },
   actions: {
-    flex: '1 1 auto',
+    flex: '1 0 auto',
     textAlign: 'right',
   },
   titleRoot: {},

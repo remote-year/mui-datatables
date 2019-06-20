@@ -13,6 +13,9 @@ const defaultSearchStyles = theme => ({
     display: 'flex',
     flex: '1 0 auto',
   },
+  closeIcon: {
+    cursor: 'pointer'
+  }
 });
 
 class TableSearch extends React.Component {
@@ -54,12 +57,10 @@ class TableSearch extends React.Component {
                 <SearchIcon />
               </InputAdornment>
             ),
-            endAdornment: (
+            endAdornment: (searchText &&
             <InputAdornment position="end">
-              <IconButton onClick={this.props.clearSearch}>
-                <CloseIcon />
-              </IconButton>
-              </InputAdornment>
+              <CloseIcon className={classes.closeIcon} onClick={this.props.clearSearch} />
+            </InputAdornment>
             ),
           }}
           value={searchText || ''}
