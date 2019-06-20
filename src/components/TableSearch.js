@@ -58,7 +58,7 @@ class TableSearch extends React.Component {
               </InputAdornment>
             ),
             endAdornment: (searchText &&
-            <InputAdornment position="end">
+            <InputAdornment position="end" className={classes.closeIcon}>
               <CloseIcon className={classes.closeIcon} onClick={this.props.clearSearch} />
             </InputAdornment>
             ),
