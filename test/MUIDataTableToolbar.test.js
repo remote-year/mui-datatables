@@ -1,16 +1,15 @@
-import React from 'react';
-import { spy, stub } from 'sinon';
-import { mount, shallow } from 'enzyme';
-import { assert, expect, should } from 'chai';
 import IconButton from '@material-ui/core/IconButton';
-import SearchIcon from '@material-ui/icons/Search';
 import DownloadIcon from '@material-ui/icons/CloudDownload';
-import PrintIcon from '@material-ui/icons/Print';
-import ViewColumnIcon from '@material-ui/icons/ViewColumn';
-import ClearIcon from '@material-ui/icons/Clear';
 import FilterIcon from '@material-ui/icons/FilterList';
-import TableToolbar from '../src/components/TableToolbar';
+import PrintIcon from '@material-ui/icons/Print';
+import SearchIcon from '@material-ui/icons/Search';
+import ViewColumnIcon from '@material-ui/icons/ViewColumn';
+import { assert } from 'chai';
+import { mount, shallow } from 'enzyme';
+import React from 'react';
+import { spy } from 'sinon';
 import TableSearch from '../src/components/TableSearch';
+import TableToolbar from '../src/components/TableToolbar';
 import textLabels from '../src/textLabels';
 
 describe('<TableToolbar />', function() {
@@ -125,13 +124,23 @@ describe('<TableToolbar />', function() {
     assert.strictEqual(actualResult.length, 0);
   });
 
+  it('should render a toolbar with custom search when option.customSearchRender is provided', () => {
+    const CustomSearchRender = () => <h1>customSearchRender</h1>;
+    const newOptions = { ...options, customSearchRender: CustomSearchRender };
+    const shallowWrapper = shallow(
+      <TableToolbar columns={columns} data={data} options={newOptions} setTableAction={setTableAction} />,
+    ).dive();
+    const instance = shallowWrapper.instance();
+    instance.setActiveIcon('search');
+    shallowWrapper.update();
+    const actualResult = shallowWrapper.find('h1');
+    assert.strictEqual(actualResult.length, 1);
+  });
+
   it('should render a toolbar with a search clicking search icon', () => {
     const shallowWrapper = shallow(
       <TableToolbar columns={columns} data={data} options={options} setTableAction={setTableAction} />,
-    )
-      .dive()
-      .dive()
-      .dive();
+    ).dive();
     const instance = shallowWrapper.instance();
 
     instance.setActiveIcon('search');
@@ -151,10 +160,7 @@ describe('<TableToolbar />', function() {
         options={options}
         setTableAction={setTableAction}
       />,
-    )
-      .dive()
-      .dive()
-      .dive();
+    ).dive();
     const instance = shallowWrapper.instance();
 
     instance.searchButton = {
@@ -179,10 +185,7 @@ describe('<TableToolbar />', function() {
   it('should set icon when calling method setActiveIcon', () => {
     const shallowWrapper = shallow(
       <TableToolbar columns={columns} data={data} options={options} setTableAction={setTableAction} />,
-    )
-      .dive()
-      .dive()
-      .dive();
+    ).dive();
     const instance = shallowWrapper.instance();
 
     instance.setActiveIcon('filter');
@@ -202,11 +205,7 @@ describe('<TableToolbar />', function() {
         setTableAction={setTableAction}
       />,
     );
-    const instance = shallowWrapper
-      .dive()
-      .dive()
-      .dive()
-      .instance();
+    const instance = shallowWrapper.dive().instance();
 
     const appendSpy = spy(document.body, 'appendChild');
     const removeSpy = spy(document.body, 'removeChild');
@@ -231,11 +230,7 @@ describe('<TableToolbar />', function() {
       />,
     );
 
-    const instance = shallowWrapper
-      .dive()
-      .dive()
-      .dive()
-      .instance();
+    const instance = shallowWrapper.dive().instance();
 
     instance.handleCSVDownload();
 
